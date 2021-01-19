@@ -19,3 +19,54 @@ body{
     text-align: center;
     color: white;
 }
+
+/* App Container */
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 75vh;
+}
+
+/* Forms */
+.formControl{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+.fieldsDiv{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height: 50px;
+}
+.fields{
+    width: 100%;
+}
+.error{
+    color: red;
+}
+.divG{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    color: black;
+}
+.fieldsG{
+    display: flex;
+    justify-content: space-evenly;
+}
+.btnDiv{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5px;
+}
+.buttonN{
+    background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+}
+@media(max-width: 500px){
+    .formControl{
+        width: 250px;
+    }
+} 
