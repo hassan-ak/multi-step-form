@@ -27,7 +27,6 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0;
-    height: 75vh;
 }
 
 /* Forms */
@@ -75,4 +74,33 @@ body{
 .buttonP{
     background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
     width: 40%;
+}
+
+/* Stepper Component */
+.steperContainer{
+    width: 600px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--box-shadow);
+    height: auto;
+    padding: 20px 0;
+}
+@media(max-width: 700px){
+    .steperContainer{
+        width: 450px;
+    }
+}
+@media(max-width: 500px){
+    .steperContainer{
+        width: 300px;
+    }
+}
+
+/* Page Title */
+h1{
+    text-align: center;
 }
