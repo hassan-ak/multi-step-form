@@ -5,6 +5,7 @@ import React from 'react';
 import Header from './components/Header';
 import { PersonalInformation } from './components/PersonalInformation';
 import { ContactInformation } from './components/ContactInformation';
+import { SubmitForm } from './components/SubmitForm';
 import Footer from './components/Footer';
 // Styles Imports
 import './App.css';
@@ -16,6 +17,7 @@ function App() {
       <div className="container">
         <PersonalInformation/>
         <ContactInformation/>
+        <SubmitForm/>
       </div>
       <Footer/>
     </div>
