@@ -14,3 +14,8 @@ body{
     font-family: 'Playfair Display', serif;
 }
 
+/* Footer */
+.footer{
+    text-align: center;
+    color: white;
+}
