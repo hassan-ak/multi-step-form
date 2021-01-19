@@ -10,6 +10,11 @@ import KeyboardArrowRigthIcon from '@material-ui/icons/KeyboardArrowRight';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+// Types Defination
+type Props = {
+    setActiveStep: any;
+};
+
 // Type declaration for FormValues
 interface FormValues {
     email: String;
@@ -29,7 +34,7 @@ const initialValues: FormValues = {
 }
 
 // Contact information form
-export const ContactInformation = () => {
+export const ContactInformation : React.FC<Props> = ({ setActiveStep }) => {
     return (
         <div>
             <Formik
@@ -56,6 +61,7 @@ export const ContactInformation = () => {
                         .required('Address is required')
                 })}
                 onSubmit={(values) => {
+                    setActiveStep(2)
                 }}
             >
                 {({ dirty, isValid }) => {
@@ -69,7 +75,7 @@ export const ContactInformation = () => {
                                     required
                                     name="email"
                                     label="Eamil"
-                                    helperText={<ErrorMessage name="email">{msg => <div className="error">{msg}</div>}</ErrorMessage>}
+                                    helperText={<ErrorMessage name="email">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
                                 />
                             </div>
                             <div className="fieldsDiv">
@@ -80,7 +86,7 @@ export const ContactInformation = () => {
                                     required
                                     name="country"
                                     label="Country"
-                                    helperText={<ErrorMessage name="country">{msg => <div className="error">{msg}</div>}</ErrorMessage>}
+                                    helperText={<ErrorMessage name="country">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
                                 />
                             </div>
                             <div className="fieldsDiv">
@@ -91,7 +97,7 @@ export const ContactInformation = () => {
                                     required
                                     name="province"
                                     label="Province/State"
-                                    helperText={<ErrorMessage name="province">{msg => <div className="error">{msg}</div>}</ErrorMessage>}
+                                    helperText={<ErrorMessage name="province">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
                                 />
                             </div>
                             <div className="fieldsDiv">
@@ -102,7 +108,7 @@ export const ContactInformation = () => {
                                     required
                                     name="city"
                                     label="City"
-                                    helperText={<ErrorMessage name="city">{msg => <div className="error">{msg}</div>}</ErrorMessage>}
+                                    helperText={<ErrorMessage name="city">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
                                 />
                             </div>
                             <div className="fieldsDiv">
@@ -113,15 +119,14 @@ export const ContactInformation = () => {
                                     required
                                     name="address"
                                     label="Address"
-                                    helperText={<ErrorMessage name="address">{msg => <div className="error">{msg}</div>}</ErrorMessage>}
+                                    helperText={<ErrorMessage name="address">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
                                 />
                             </div>
                             <div className="btnDiv">
                                 <Button
                                     variant="contained"
                                     className="buttonP"
-                                    type="submit"
-                                    disabled={!dirty || !isValid}
+                                    onClick={()=>setActiveStep(0)}
                                     startIcon={<KeyboardArrowLeftIcon />}
                                 >
                                     Back

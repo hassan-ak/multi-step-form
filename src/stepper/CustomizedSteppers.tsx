@@ -155,14 +155,14 @@ function getSteps() {
     return ['Personal Information', 'Contact Information', 'Submit'];
 }
 // Steps Functions
-function getStepContent(step: any) {
-    switch (step) {
+function getStepContent(activeStep: Number, setActiveStep: any) {
+    switch (activeStep) {
         case 0:
-            return <PersonalInformation />;
+            return <PersonalInformation setActiveStep={setActiveStep} />;
         case 1:
-            return <ContactInformation />;
+            return <ContactInformation setActiveStep={setActiveStep} />;
         case 2:
-            return <SubmitForm />;
+            return <SubmitForm setActiveStep={setActiveStep} />;
         default:
             return 'Some Error Happened, Start Again';
     }
@@ -181,7 +181,7 @@ export default function CustomizedSteppers() {
                     </Step>
                 ))}
             </Stepper>
-            {getStepContent(activeStep)}
+            {getStepContent(activeStep, setActiveStep)}
         </div>
     );
 } 

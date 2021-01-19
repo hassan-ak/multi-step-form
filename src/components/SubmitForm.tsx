@@ -9,6 +9,11 @@ import KeyboardArrowRigthIcon from '@material-ui/icons/KeyboardArrowRight';
 // Formik Imports
 import { Formik, Field, Form } from 'formik';
 
+// Types Defination
+type Props = {
+    setActiveStep: any;
+};
+
 // Types Defination for Form Values
 interface FormValues {
     name: String;
@@ -33,12 +38,13 @@ const initialValues: FormValues = {
     address: 'address address',
 }
 
-export const SubmitForm = () => {
+export const SubmitForm : React.FC<Props> = ({ setActiveStep }) => {
     return (
         <div>
             <Formik
                 initialValues={initialValues}
                 onSubmit={(values) => {
+                    setActiveStep(0)
                 }}
             >
                 < Form className="formControl">
@@ -94,7 +100,7 @@ export const SubmitForm = () => {
                         <Button
                             variant="contained"
                             className="buttonP"
-                            type="submit"
+                            onClick={()=>setActiveStep(0)}
                             startIcon={<KeyboardArrowLeftIcon />}
                         >
                             Edit

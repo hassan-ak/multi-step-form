@@ -9,6 +9,11 @@ import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+// Types Defination
+type Props = {
+    setActiveStep: any;
+};
+
 // Types for form valyes
 interface FormValues {
     name: String;
@@ -24,7 +29,7 @@ const initialValues: FormValues = {
 }
 
 // Personal Information form
-export const PersonalInformation = () => {
+export const PersonalInformation: React.FC<Props> = ({ setActiveStep }) => {
     return (
         <div>
             <Formik
@@ -40,6 +45,7 @@ export const PersonalInformation = () => {
                         .required('Required'),
                 })}
                 onSubmit={(values) => {
+                    setActiveStep(1)
                 }}
             >
                 {({ dirty, isValid }) => {
@@ -53,7 +59,7 @@ export const PersonalInformation = () => {
                                     required
                                     name="name"
                                     label="Full Name"
-                                    helperText={<ErrorMessage name="name">{msg => <div className="error">{msg}</div>}</ErrorMessage>}
+                                    helperText={<ErrorMessage name="name">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
                                 />
                             </div>
                             <div className="fieldsDiv">
@@ -64,7 +70,7 @@ export const PersonalInformation = () => {
                                     required
                                     name="fName"
                                     label="Father Name"
-                                    helperText={<ErrorMessage name="fName">{msg => <div className="error">{msg}</div>}</ErrorMessage>}
+                                    helperText={<ErrorMessage name="fName">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
                                 />
                             </div>
                             <div className="divG">
