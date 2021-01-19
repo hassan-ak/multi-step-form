@@ -1,12 +1,17 @@
+// Imports
+// React Imports
 import React from 'react';
-import logo from './logo.svg';
+// Component Imports
+import Header from './components/Header';
+// Styles Imports
 import './App.css';
 
 function App() {
   return (
     <div>
-      MU Form
+      <Header/>
     </div>
+    
   );
 }
 
