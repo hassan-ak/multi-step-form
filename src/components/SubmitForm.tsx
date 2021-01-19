@@ -12,9 +12,10 @@ import { Formik, Field, Form } from 'formik';
 // Types Defination
 type Props = {
     setActiveStep: any;
+    prevValues: any;
+    setFormValues:any;
 };
 
-// Types Defination for Form Values
 interface FormValues {
     name: String;
     fName: String;
@@ -26,24 +27,25 @@ interface FormValues {
     address: String;
 }
 
-// Initial Values
 const initialValues: FormValues = {
-    name: 'name name nmae',
-    fName: 'fathers name  fathers name',
-    gender: 'gender gender',
-    email: 'mail mail',
-    country: 'country country',
-    province: 'province province',
-    city: 'city city',
-    address: 'address address',
+    name: '',
+    fName: '',
+    gender: '',
+    email: '',
+    country: '',
+    province: '',
+    city: '',
+    address: '',
 }
 
-export const SubmitForm : React.FC<Props> = ({ setActiveStep }) => {
+export const SubmitForm : React.FC<Props> = ({ setActiveStep, prevValues, setFormValues }) => {
     return (
         <div>
             <Formik
-                initialValues={initialValues}
-                onSubmit={(values) => {
+                initialValues={prevValues}
+                onSubmit={(values, { resetForm }) => {
+                    resetForm()
+                    setFormValues({...initialValues,values})
                     setActiveStep(0)
                 }}
             >
@@ -51,7 +53,7 @@ export const SubmitForm : React.FC<Props> = ({ setActiveStep }) => {
                     <div className="fieldsDiv">
                         <Field 
                             label="Full Name" 
-                            value={initialValues.name} 
+                            value={prevValues.name} 
                             as={TextField} 
                             variant="outlined" 
                             className="fields" 
@@ -61,7 +63,7 @@ export const SubmitForm : React.FC<Props> = ({ setActiveStep }) => {
                     <div className="fieldsDiv">
                         <Field 
                             label="Father Name" 
-                            value={initialValues.fName} 
+                            value={prevValues.fName} 
                             as={TextField} 
                             variant="outlined" 
                             className="fields" 
@@ -71,7 +73,7 @@ export const SubmitForm : React.FC<Props> = ({ setActiveStep }) => {
                     <div className="fieldsDiv">
                         <Field 
                             label="Gender" 
-                            value={initialValues.gender} 
+                            value={prevValues.gender} 
                             as={TextField} 
                             variant="outlined" 
                             className="fields" 
@@ -81,7 +83,7 @@ export const SubmitForm : React.FC<Props> = ({ setActiveStep }) => {
                     <div className="fieldsDiv">
                         <Field 
                             label="Email" 
-                            value={initialValues.email} 
+                            value={prevValues.email} 
                             as={TextField} 
                             variant="outlined" 
                             className="fields" 
@@ -93,7 +95,7 @@ export const SubmitForm : React.FC<Props> = ({ setActiveStep }) => {
                             as={TextField} 
                             variant="outlined" 
                             className="fields" disabled
-                            value={initialValues.address+", "+initialValues.city+", "+initialValues.province+", "+initialValues.country}
+                            value={prevValues.address+", "+prevValues.city+", "+prevValues.province+", "+prevValues.country}
                         />
                     </div>
                     <div className="btnDiv">

@@ -155,14 +155,14 @@ function getSteps() {
     return ['Personal Information', 'Contact Information', 'Submit'];
 }
 // Steps Functions
-function getStepContent(activeStep: Number, setActiveStep: any) {
+function getStepContent(activeStep: Number, setActiveStep: any, formValues: any, setFormValues: any) {
     switch (activeStep) {
         case 0:
-            return <PersonalInformation setActiveStep={setActiveStep} />;
+            return <PersonalInformation setActiveStep={setActiveStep} prevValues={formValues} setFormValues={setFormValues} />;
         case 1:
-            return <ContactInformation setActiveStep={setActiveStep} />;
+            return <ContactInformation setActiveStep={setActiveStep} prevValues={formValues} setFormValues={setFormValues} />;
         case 2:
-            return <SubmitForm setActiveStep={setActiveStep} />;
+            return <SubmitForm setActiveStep={setActiveStep} prevValues={formValues} setFormValues={setFormValues} />;
         default:
             return 'Some Error Happened, Start Again';
     }
@@ -171,6 +171,8 @@ function getStepContent(activeStep: Number, setActiveStep: any) {
 export default function CustomizedSteppers() {
     // UseState to define Active step
     const [activeStep, setActiveStep] = React.useState(0);
+    // Initial Values
+    const [formValues, setFormValues] = React.useState({})
     const steps = getSteps();
     return (
         <div className="steperContainer">
@@ -181,7 +183,7 @@ export default function CustomizedSteppers() {
                     </Step>
                 ))}
             </Stepper>
-            {getStepContent(activeStep, setActiveStep)}
+            {getStepContent(activeStep, setActiveStep, formValues, setFormValues)}
         </div>
     );
 } 

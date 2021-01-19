@@ -12,28 +12,16 @@ import * as Yup from 'yup';
 // Types Defination
 type Props = {
     setActiveStep: any;
+    prevValues: any;
+    setFormValues:any;
 };
 
-// Types for form valyes
-interface FormValues {
-    name: String;
-    fName: String;
-    gender: String;
-}
-
-// initial values
-const initialValues: FormValues = {
-    name: '',
-    fName: '',
-    gender: '',
-}
-
 // Personal Information form
-export const PersonalInformation: React.FC<Props> = ({ setActiveStep }) => {
+export const PersonalInformation: React.FC<Props> = ({ setActiveStep, prevValues, setFormValues }) => {
     return (
         <div>
             <Formik
-                initialValues={initialValues}
+                initialValues={prevValues}
                 validationSchema={Yup.object({
                     name: Yup.string()
                         .min(3, 'Must be 3 characters or more')
@@ -41,11 +29,12 @@ export const PersonalInformation: React.FC<Props> = ({ setActiveStep }) => {
                     fName: Yup.string()
                         .min(3, 'Must be 3 characters or more')
                         .required('Father Name is required'),
-                    gender: Yup.string()
-                        .required('Required'),
+                    gender:Yup.string()
+                        .required('Kindly Mention Gender')
                 })}
                 onSubmit={(values) => {
                     setActiveStep(1)
+                    setFormValues({...prevValues,...values})
                 }}
             >
                 {({ dirty, isValid }) => {
@@ -91,7 +80,6 @@ export const PersonalInformation: React.FC<Props> = ({ setActiveStep }) => {
                                     variant="contained"
                                     className="buttonN"
                                     type="submit"
-                                    disabled={!dirty || !isValid}
                                     endIcon={<KeyboardArrowRightIcon />}
                                 >
                                     Next

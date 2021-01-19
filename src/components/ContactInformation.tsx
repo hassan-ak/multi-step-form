@@ -13,32 +13,16 @@ import * as Yup from 'yup';
 // Types Defination
 type Props = {
     setActiveStep: any;
+    prevValues: any;
+    setFormValues:any;
 };
 
-// Type declaration for FormValues
-interface FormValues {
-    email: String;
-    country: String;
-    province: String;
-    city: String;
-    address: String;
-}
-
-// Initila Values
-const initialValues: FormValues = {
-    email: '',
-    country: '',
-    province: '',
-    city: '',
-    address: '',
-}
-
 // Contact information form
-export const ContactInformation : React.FC<Props> = ({ setActiveStep }) => {
+export const ContactInformation : React.FC<Props> = ({ setActiveStep, prevValues, setFormValues }) => {
     return (
         <div>
             <Formik
-                initialValues={initialValues}
+                initialValues={prevValues}
                 validationSchema={Yup.object({
                     email: Yup.string()
                         .email("Invalid Email address")
@@ -62,6 +46,7 @@ export const ContactInformation : React.FC<Props> = ({ setActiveStep }) => {
                 })}
                 onSubmit={(values) => {
                     setActiveStep(2)
+                    setFormValues({...prevValues,...values})
                 }}
             >
                 {({ dirty, isValid }) => {
@@ -135,7 +120,6 @@ export const ContactInformation : React.FC<Props> = ({ setActiveStep }) => {
                                     variant="contained"
                                     className="buttonP"
                                     type="submit"
-                                    disabled={!dirty || !isValid}
                                     endIcon={<KeyboardArrowRigthIcon />}
                                 >
                                     Preview
