@@ -27,7 +27,7 @@ interface FormValues {
     address: String;
 }
 
-const initialValues: FormValues = {
+const resetValues: FormValues = {
     name: '',
     fName: '',
     gender: '',
@@ -42,10 +42,9 @@ export const SubmitForm : React.FC<Props> = ({ setActiveStep, prevValues, setFor
     return (
         <div>
             <Formik
-                initialValues={prevValues}
-                onSubmit={(values, { resetForm }) => {
-                    resetForm()
-                    setFormValues({...initialValues,values})
+                initialValues={resetValues}
+                onSubmit={(values) => {
+                    setFormValues({...resetValues,...values})
                     setActiveStep(0)
                 }}
             >

@@ -33,8 +33,8 @@ export const PersonalInformation: React.FC<Props> = ({ setActiveStep, prevValues
                         .required('Kindly Mention Gender')
                 })}
                 onSubmit={(values) => {
-                    setActiveStep(1)
                     setFormValues({...prevValues,...values})
+                    setActiveStep(1)
                 }}
             >
                 {({ dirty, isValid }) => {
@@ -43,6 +43,7 @@ export const PersonalInformation: React.FC<Props> = ({ setActiveStep, prevValues
                             <div className="fieldsDiv">
                                 <Field
                                     as={TextField}
+                                    autoComplete="off"
                                     variant="outlined"
                                     className="fields"
                                     required
@@ -55,6 +56,7 @@ export const PersonalInformation: React.FC<Props> = ({ setActiveStep, prevValues
                                 <Field
                                     as={TextField}
                                     variant="outlined"
+                                    autoComplete="off"
                                     className="fields"
                                     required
                                     name="fName"
@@ -66,11 +68,11 @@ export const PersonalInformation: React.FC<Props> = ({ setActiveStep, prevValues
                                 <div>Gender</div>
                                 <div role="group" className="fieldsG">
                                     <label>
-                                        <Field type="radio" name="gender" value="male" />
+                                        <Field type="radio" name="gender" value="Male" />
                                         Male
                                     </label>
                                     <label>
-                                        <Field type="radio" name="gender" value="female" />
+                                        <Field type="radio" name="gender" value="Female" />
                                         Female
                                     </label>
                                 </div>

@@ -45,8 +45,8 @@ export const ContactInformation : React.FC<Props> = ({ setActiveStep, prevValues
                         .required('Address is required')
                 })}
                 onSubmit={(values) => {
-                    setActiveStep(2)
                     setFormValues({...prevValues,...values})
+                    setActiveStep(2)
                 }}
             >
                 {({ dirty, isValid }) => {
@@ -56,6 +56,7 @@ export const ContactInformation : React.FC<Props> = ({ setActiveStep, prevValues
                                 <Field
                                     as={TextField}
                                     variant="outlined"
+                                    autoComplete="off"
                                     className="fields"
                                     required
                                     name="email"
@@ -69,6 +70,7 @@ export const ContactInformation : React.FC<Props> = ({ setActiveStep, prevValues
                                     variant="outlined"
                                     className="fields"
                                     required
+                                    autoComplete="off"
                                     name="country"
                                     label="Country"
                                     helperText={<ErrorMessage name="country">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
@@ -80,6 +82,7 @@ export const ContactInformation : React.FC<Props> = ({ setActiveStep, prevValues
                                     variant="outlined"
                                     className="fields"
                                     required
+                                    autoComplete="off"
                                     name="province"
                                     label="Province/State"
                                     helperText={<ErrorMessage name="province">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
@@ -91,6 +94,7 @@ export const ContactInformation : React.FC<Props> = ({ setActiveStep, prevValues
                                     variant="outlined"
                                     className="fields"
                                     required
+                                    autoComplete="off"
                                     name="city"
                                     label="City"
                                     helperText={<ErrorMessage name="city">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
@@ -102,6 +106,7 @@ export const ContactInformation : React.FC<Props> = ({ setActiveStep, prevValues
                                     variant="outlined"
                                     className="fields"
                                     required
+                                    autoComplete="off"
                                     name="address"
                                     label="Address"
                                     helperText={<ErrorMessage name="address">{msg => <span className="error">{msg}</span>}</ErrorMessage>}
